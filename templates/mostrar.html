@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
- <meta charset="UTF-8">
- <meta http-equiv="X-UA-Compatible" content="IE=edge">
- <meta name="viewport" content="width=device-width, initialscale=1.0">
- <title>Drilling7</title>
-</head>
+
+{% block content %}
 <style>
  table {
     border: 8px outset;
@@ -22,10 +16,12 @@
  }
 </style>
     <body>
+        
         <h2 style="text-align:center"> Información </h2>
         <table align="center" style="margin: 0px auto;">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Nombre</th>
                     <th>Ciudad</th>
                     <th>Pais</th>
@@ -33,14 +29,14 @@
                     <th>Eliminar</th>
                 </tr>
             </thead>
+            {% for item in datos %}
             <tbody>
-                {% for item in datos %}
                 <tr>
                     <td scope="row">{{item.id}}</td>
                     <td>{{item.nombre}}</td>
                     <td>{{item.ciudad}}</td>
                     <td>{{item.pais}}</td>
-                    <td><a href="/editar/{{item.pk}}">Actualizar</a></td>
+                    <td><a href="/actualizar/{{item.pk}}">Actualizar</a></td>
                     <td><a href="/eliminar/{{item.pk}}">Eliminar</a></td>
                 </tr>
                 {% endfor %}
@@ -51,7 +47,10 @@
             ¿Informacion de los laboratorios?
         </div>
         <p>
-            <a href="insertar">Ir a la pagina de Inicio</a>
+            <a href="/agregar/">Agregar nuevo registro</a>
+        </p>
+        <p>
+            <a href="/">Volver a Inicio</a>
         </p>
     </body>
-</html>
+{%  endblock %}

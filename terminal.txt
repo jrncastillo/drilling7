@@ -1,0 +1,26 @@
+python shell
+
+>>> from laboratorio.models import *
+>>> objetos_lab = LaboratorioModel.objects.all()
+>>> print(objetos_lab) 
+<QuerySet [<LaboratorioModel: LaboratorioModel object (1)>, <LaboratorioModel: LaboratorioModel object (2)>, <LaboratorioModel: LaboratorioModel object (3)>]>
+
+>>> objetos_dir = DirectorGeneralModel.objects.all()
+>>> print(objetos_dir)
+<QuerySet [<DirectorGeneralModel: DirectorGeneralModel object (1)>, <DirectorGeneralModel: DirectorGeneralModel object (2)>, <DirectorGeneralModel: DirectorGeneralModel object (3)>]>
+
+>>> objetos_prod = ProductosModel.objects.all()
+>>> print(objetos_prod)
+<QuerySet [<ProductosModel: ProductosModel object (1)>, <ProductosModel: ProductosModel object (2)>, <ProductosModel: ProductosModel object (3)>]>
+
+>>> lab = ProductosModel.objects.filter(nombre='Producto1').values('laboratorio')
+>>> print(lab)
+
+>>> orden = ProductosModel.objects.all().order_by('nombre').values('nombre', 'laboratorio')
+>>> print(orden)
+<QuerySet [{'nombre': 'Producto1', 'laboratorio': 1}, {'nombre': 'Producto2', 'laboratorio': 2}, {'nombre': 'Producto3', 'laboratorio': 3}]>
+
+labs = ProductosModel.objects.filter(laboratorio_id = 1).values('laboratorio','nombre')
+labs = LaboratorioModel.objects.filter(id =1).values
+<QuerySet [{'laboratorio': 1}, {'laboratorio': 2}, {'laboratorio': 3}]>
+consulta2 = PorductosModel.objects.filter(id = labs)
